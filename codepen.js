@@ -9,7 +9,11 @@
 *   <a href="https://soundcloud.com/matas/hobnotropic" class="sc-player">My new dub track</a>
 *   The link will be automatically replaced by the HTML based player
 */
+
+
+
 (function($) {
+
   // Convert milliseconds into Hours (h), Minutes (m), and Seconds (s)
   var timecode = function(ms) {
     var hms = function(ms) {
@@ -362,8 +366,14 @@
         }
         $(player)
           .toggleClass('playing', status)
-          .trigger((status ? 'onPlayerPlay' : 'onPlayerPause'));
+          .trigger((status ? 'onPlayerPlay' : 'onPlayerPause'))
+          document.getElementById("wavid").style.visibility = "visible";
+             document.getElementById("timeid").style.visibility = "visible";
+             document.getElementById("btmid").style.visibility = "visible";
+         document.querySelector("h3").style.visibility = "visible";
+         document.querySelector("h4").style.visibility = "visible";
       },
+
       onPlay = function(player, id) {
         var track = getPlayerData(player).tracks[id || 0];
         updateTrackInfo(player, track);
@@ -502,12 +512,12 @@
           .find('.sc-controls')
             .append('<a href="#play" class="sc-play">Play</a> <a href="#pause" class="sc-pause hidden">Pause</a>')
           .end()
-          .append('<a href="#info" class="sc-info-toggle">Info</a>')
+          .append('<a href="#info" class="sc-info-toggle"id="inid">Info</a>')
           .append('<div class="sc-scrubber"></div>')
             .find('.sc-scrubber')
               .append('<div class="sc-volume-slider"><span class="sc-volume-status" style="width:' + soundVolume +'%"></span></div>')
-              .append('<div class="sc-time-span"><div class="sc-waveform-container"></div><div class="sc-buffer"></div><div class="sc-played"></div></div>')
-              .append('<div class="sc-time-indicators"><span class="sc-position"></span> | <span class="sc-duration"></span></div>');
+              .append('<div class="sc-time-span"><div class="sc-waveform-container"id="wavid"></div><div class="sc-buffer"></div><div class="sc-played"></div></div>')
+              .append('<div class="sc-time-indicators"id="timeid"><span class="sc-position"></span> | <span class="sc-duration"></span></div>');
         $list = $('<ol class="sc-trackslist"></ol>').appendTo($player);
         // load and parse the track data from SoundCloud API
         loadTracksData($player, links, opts.apiKey);
@@ -720,5 +730,7 @@
       $.scPlayer.defaults.onDomReady();
     }
   });
+
+
 
 })(jQuery);
