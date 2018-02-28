@@ -1,6 +1,6 @@
 /* LAYOUT *
 -----------------------------------------------*/
-.cover{width:80vw;max-width:800px;filter:invert(1)}
+.cover{width:80vw;max-width:800px;filter:invert(1);max-height: 80vh;}
 .cf:before,
 .cf:after {
   content: " ";
@@ -22,7 +22,7 @@
 -----------------------------------------------*/
 body {
   margin: 0;
-  background-color: #4d4d4d;
+  background-color: #7c80a7;
   color: white;
   text-align: center;
   font-family: 'Montserrat', sans-serif;
